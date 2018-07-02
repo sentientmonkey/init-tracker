@@ -1,0 +1,7 @@
+.Initiative {
+  max-width: 600px;
+}
+
+.Initiative-selected {
+  background-color: lightblue;
+}
