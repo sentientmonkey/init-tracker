@@ -5,3 +5,7 @@
 .Initiative-selected {
   background-color: lightblue;
 }
+
+.Initiative-actions button {
+  margin: 6px 10px 10px 6px;
+}

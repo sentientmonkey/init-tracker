@@ -6,11 +6,11 @@ This is a very simple ininitiative tracker for RPGs. My target is D&D 5E, but I'
 
 Ordered list of features I'm thinking about...
 * [x] Handle ties
+* [x] Add reset to clear round state
+* [x] Keep track of time based on turns and rounds (6 seconds per turn)
 * [ ] Save notes per character for statuses
-* [ ] Add reset to clear round state
 * [ ] Add AC so hit/miss checks are faster
 * [ ] Allow DEX to be updated for future combat
-* [ ] Keep track of time based on turns and rounds (6 seconds per turn)
 * [ ] Maybe condition icons?
 * [ ] Save state in local storage (to handle refresh cases)
 
