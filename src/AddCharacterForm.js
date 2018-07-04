@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddIcon from '@material-ui/icons/Add';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import './AddCharacterForm.css';
@@ -34,10 +35,10 @@ class AddCharacterForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="AddCharacterForm">
-        <Input className="AddCharacterForm-input" autoFocus={true} placeholder="Name" type="text" inputRef={el => this.name = el} />
+        <Input className="AddCharacterForm-input" autoFocus={true} placeholder="Name" type="text" inputRef={el => this.name = el}/>
         <Input className="AddCharacterForm-input" placeholder="Roll" type="number" inputRef={el => this.roll = el} />
-        <Button color="primary" type="submit">
-          Add
+        <Button color="primary" mini variant="fab" aria-label="add" type="submit">
+          <AddIcon />
         </Button>
       </form>
     );

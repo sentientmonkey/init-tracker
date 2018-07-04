@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import AddCharacterForm from './AddCharacterForm.js';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -63,16 +65,21 @@ class Initiative extends Component {
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
-    );
+  );
+
     return (
-      <div className="Initiative">
-        <h3>Round {this.state.round}</h3>
-        <Button variant="contained" color="primary" onClick={this.nextTurn}>Next</Button>
-        <List className="Initiatve-list">
-          {listItems}
-        </List>
-        <AddCharacterForm addCharacter={this.addCharacter}/>
-      </div>
+      <Card>
+        <CardContent>
+          <h3>Round {this.state.round}</h3>
+          <Button variant="contained" color="primary" onClick={this.nextTurn}>Next</Button>
+          <div className="Initiative">
+            <List classes="Initiatve-list">
+              {listItems}
+            </List>
+          </div>
+          <AddCharacterForm addCharacter={this.addCharacter}/>
+        </CardContent>
+      </Card>
     );
   }
 }

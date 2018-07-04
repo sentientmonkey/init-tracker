@@ -5,7 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import indigo from '@material-ui/core/colors/indigo';
+import grey from '@material-ui/core/colors/grey';
 import pink from '@material-ui/core/colors/pink';
 import red from '@material-ui/core/colors/red';
 
@@ -14,10 +14,11 @@ import red from '@material-ui/core/colors/red';
 const theme = createMuiTheme({
   palette: {
     primary: pink,
-    secondary: indigo,
+    secondary: grey,
     error: red,
     contrastThreshold: 3,
     tonalOffset: 0.2,
+    marginNormal: 20,
   },
 });
 
