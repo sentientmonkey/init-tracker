@@ -18,7 +18,6 @@ const theme = createMuiTheme({
     error: red,
     contrastThreshold: 3,
     tonalOffset: 0.2,
-    marginNormal: 20,
   },
 });
 

@@ -5,7 +5,7 @@ This is a very simple ininitiative tracker for RPGs. My target is D&D 5E, but I'
 ## TODO list
 
 Ordered list of features I'm thinking about...
-* [ ] Handle ties
+* [x] Handle ties
 * [ ] Save notes per character for statuses
 * [ ] Add reset to clear round state
 * [ ] Add AC so hit/miss checks are faster

@@ -14,8 +14,12 @@ class AddCharacterForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let name = this.name.value;
-    let roll = this.roll.value;
+    let roll = parseInt(this.roll.value, 10);
     if (name === "") {
+      return;
+    }
+
+    if (isNaN(roll)) {
       return;
     }
 
@@ -25,6 +29,7 @@ class AddCharacterForm extends Component {
       name: name,
       roll: roll,
       index: index,
+      sortIndex: 0,
     };
     this.props.addCharacter(character);
     this.name.value = "";

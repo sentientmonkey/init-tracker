@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import AddCharacterForm from './AddCharacterForm.js';
+import Character from './Character.js';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 import './Initiative.css';
 
@@ -18,13 +14,41 @@ class Initiative extends Component {
     this.state = {characters: [], round: 1, turn: null};
 
     this.addCharacter = this.addCharacter.bind(this);
+    this.moveCharacter = this.moveCharacter.bind(this);
     this.nextTurn = this.nextTurn.bind(this);
   }
 
   addCharacter(character) {
     let characters = this.state.characters
         .concat(character)
-        .sort((a,b) => b.roll - a.roll);
+        .sort(this.byIndexAndRoll);
+    this.setState({characters: characters});
+  }
+
+  byIndexAndRoll(a,b) {
+    const rollDiff = b.roll - a.roll;
+    if (rollDiff !== 0) {
+      return rollDiff;
+    }
+
+    return b.sortIndex - a.sortIndex;
+  }
+
+  moveCharacter(index, event) {
+    event.preventDefault();
+
+    const characters = this.state.characters
+      .map((character,i) => {
+        if (character.index === index) {
+          let prevSortDiff = 0;
+          if (i > 0) {
+            prevSortDiff = this.state.characters[i-1].sortIndex-character.sortIndex;
+          }
+          character.sortIndex += (prevSortDiff + 1);
+        }
+        return character;
+      }).sort(this.byIndexAndRoll);
+
     this.setState({characters: characters});
   }
 
@@ -33,7 +57,7 @@ class Initiative extends Component {
     if (this.state.turn && this.state.turn.index === index) {
       this.nextTurn();
     }
-    let characters = this.state.characters
+    const characters = this.state.characters
       .filter((character) => character.index !== index);
     this.setState({characters: characters});
   }
@@ -57,15 +81,12 @@ class Initiative extends Component {
   render() {
     const turn = this.state.turn;
     const listItems = this.state.characters.map((character) =>
-    <ListItem key={character.index} className={character === turn ? "Initiative-selected" : ""}>
-      <ListItemText primary={character.name} secondary={character.roll} />
-      <ListItemSecondaryAction>
-        <IconButton aria-label="Delete" onClick={this.removeCharacter.bind(this,character.index)}>
-          <DeleteIcon />
-        </IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
-  );
+      <Character character={character}
+                 moveCharacter={this.moveCharacter}
+                 removeCharacter={this.removeCharacter}
+                 turn={turn}
+                 initiative={this} />
+    );
 
     return (
       <Card>
