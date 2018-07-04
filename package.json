@@ -2,6 +2,7 @@
   "name": "init-tracker",
   "version": "0.1.0",
   "private": true,
+  "license" : "BSD-3-Clause",
   "homepage": "http://sentientmonkey.github.io/init-tracker",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",

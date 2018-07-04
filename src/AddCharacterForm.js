@@ -33,10 +33,10 @@ class AddCharacterForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} classNames="AddCharacterForm">
+      <form onSubmit={this.handleSubmit} className="AddCharacterForm">
         <Input className="AddCharacterForm-input" autoFocus={true} placeholder="Name" type="text" inputRef={el => this.name = el} />
         <Input className="AddCharacterForm-input" placeholder="Roll" type="number" inputRef={el => this.roll = el} />
-        <Button color="primary" type="submit" primary={true}>
+        <Button color="primary" type="submit">
           Add
         </Button>
       </form>
