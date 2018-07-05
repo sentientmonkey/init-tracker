@@ -6,6 +6,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import List from '@material-ui/core/List';
+import Hidden from '@material-ui/core/Hidden';
+import IconSkipNext from '@material-ui/icons/SkipNext';
+import IconDeleteSweep from '@material-ui/icons/DeleteSweep';
+import IconRotateLeft from '@material-ui/icons/RotateLeft';
 
 import './Initiative.css';
 
@@ -121,22 +125,31 @@ class Initiative extends Component {
 
   render() {
     return (
+      <div className="Initiative">
       <Card>
         <CardHeader title={this.roundTitle()} subheader={this.roundTime()}/>
         <CardContent>
-          <div className="Initiative-actions">
-            <Button variant="contained" color="primary" onClick={this.nextTurn}>Next</Button>
-            <Button variant="contained" color="secondary" onClick={this.reset}>Reset</Button>
-            <Button variant="contained" color="secondary" onClick={this.clear}>Clear</Button>
-          </div>
-          <div className="Initiative">
-            <List classes="Initiatve-list">
-              {this.getListItems()}
-            </List>
-          </div>
+          <Hidden mdUp>
+            <div className="Initiative-actions-medium">
+              <Button variant="contained" size="small" color="primary" aria-label="Next" onClick={this.nextTurn}><IconSkipNext /></Button>
+              <Button variant="contained" size="small" color="secondary" aria-label="Reset" onClick={this.reset}><IconRotateLeft /></Button>
+              <Button variant="contained" size="small" color="secondary" aria-label="Clear" onClick={this.clear}><IconDeleteSweep /></Button>
+            </div>
+          </Hidden>
+          <Hidden smDown>
+            <div className="Initiative-actions-large">
+              <Button variant="contained" color="primary" onClick={this.nextTurn}>Next &nbsp; <IconSkipNext /></Button>
+              <Button variant="contained" color="secondary" onClick={this.reset}>Reset &nbsp; <IconRotateLeft /></Button>
+              <Button variant="contained" color="secondary" onClick={this.clear}>Clear &nbsp; <IconDeleteSweep /></Button>
+            </div>
+          </Hidden>
+          <List classes="Initiatve-list">
+            {this.getListItems()}
+          </List>
           <AddCharacterForm addCharacter={this.addCharacter}/>
         </CardContent>
       </Card>
+      </div>
     );
   }
 }

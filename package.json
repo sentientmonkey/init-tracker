@@ -2,8 +2,8 @@
   "name": "init-tracker",
   "version": "0.1.0",
   "private": true,
-  "license" : "BSD-3-Clause",
-  "homepage": "http://sentientmonkey.github.io/init-tracker",
+  "license": "BSD-3-Clause",
+  "homepage": "https://init-tracker.info",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
@@ -22,9 +22,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "devDependencies": {
-    "gh-pages": "^1.2.0"
+    "deploy": "aws s3 sync build s3://init-tracker.info"
   }
 }

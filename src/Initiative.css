@@ -1,4 +1,8 @@
 .Initiative {
+  max-width: 800px;
+}
+
+.Initiative-list {
   max-width: 500px;
 }
 
@@ -6,6 +10,10 @@
   background-color: lightblue;
 }
 
-.Initiative-actions button {
+.Initiative-actions-large button {
   margin: 6px 10px 10px 6px;
+}
+
+.Initiative-actions-medium button {
+  margin: 2px 4px 4px 2px;
 }

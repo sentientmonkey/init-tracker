@@ -1,8 +1,35 @@
 .App {
   font-size: 1.5rem;
+  font: "Roboto", "Helvetica", "Arial", sans-serif;
   color: #484848;
+  min-height: 94%;
 }
 
-.App-main {
+.App-main-large {
   padding: 50px;
+}
+
+.App-main-small {
+  padding: 0px;
+}
+
+.App-footer {
+  text-align: center;
+  font-size: 1.0rem;
+}
+
+a:link {
+  color: #616161;
+}
+
+a:visited {
+  color: #424242;
+}
+
+a:hover {
+  color: #757575;
+}
+
+a:active {
+  color: #9E9E9E;
 }
