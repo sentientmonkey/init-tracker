@@ -143,7 +143,7 @@ class Initiative extends Component {
               <Button variant="contained" color="secondary" onClick={this.clear}>Clear &nbsp; <IconDeleteSweep /></Button>
             </div>
           </Hidden>
-          <List classes="Initiatve-list">
+          <List>
             {this.getListItems()}
           </List>
           <AddCharacterForm addCharacter={this.addCharacter}/>
