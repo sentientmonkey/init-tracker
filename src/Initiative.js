@@ -28,11 +28,22 @@ class Initiative extends Component {
     this.clear = this.clear.bind(this);
   }
 
+  componentDidMount() {
+    let storageState = localStorage.getItem("state");
+    if (storageState !== null) {
+      this.setState(JSON.parse(storageState));
+    }
+  }
+
+  saveState() {
+    localStorage.setItem("state", JSON.stringify(this.state));
+  }
+
   addCharacter(character) {
     let characters = this.state.characters
         .concat(character)
         .sort(this.byIndexAndRoll);
-    this.setState({characters: characters});
+    this.setState({characters: characters}, this.saveState);
   }
 
   byIndexAndRoll(a,b) {
@@ -59,7 +70,7 @@ class Initiative extends Component {
         return character;
       }).sort(this.byIndexAndRoll);
 
-    this.setState({characters: characters});
+    this.setState({characters: characters}, this.saveState);
   }
 
   removeCharacter(index, event) {
@@ -69,25 +80,28 @@ class Initiative extends Component {
     }
     const characters = this.state.characters
       .filter((character) => character.index !== index);
-    this.setState({characters: characters});
+    this.setState({characters: characters}, this.saveState);
   }
 
   nextTurn() {
-    let turn = null;
+    if (this.state.characters.length === 0) {
+      return;
+    }
+    let turn = this.state.turn;
     let round = this.state.round;
     let time = this.state.time;
-    if (this.state.turn == null) {
-      turn = this.state.characters[0];
+    let index = this.state.characters.findIndex((character) => character.index === turn);
+    if (index === -1) {
+      index = 0;
     } else {
-      let index = this.state.characters.indexOf(this.state.turn);
       index = index+1;
-      turn = this.state.characters[index%this.state.characters.length];
-      if (index === this.state.characters.length) {
-        round += 1;
-        time += 6;
-      }
     }
-    this.setState({turn: turn, round: round, time: time});
+    turn = this.state.characters[index%this.state.characters.length].index;
+    if (index === this.state.characters.length) {
+      round += 1;
+      time += 6;
+    }
+    this.setState({turn: turn, round: round, time: time}, this.saveState);
   }
 
   reset() {
@@ -95,11 +109,11 @@ class Initiative extends Component {
         turn: this.INITIAL_STATE.turn,
         round: this.INITIAL_STATE.round,
         time: this.INITIAL_STATE.time,
-    });
+    }, this.saveState);
   }
 
   clear() {
-    this.setState(this.INITIAL_STATE);
+    this.setState(this.INITIAL_STATE, this.saveState);
   }
 
   roundTitle() {

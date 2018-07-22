@@ -11,7 +11,7 @@ class Character extends Component {
   render() {
     const character = this.props.character;
     const initiative = this.props.initiative;
-    const selectedClass = character === this.props.turn ? "Initiative-selected" : "";
+    const selectedClass = character.index === this.props.turn ? "Initiative-selected" : "";
 
     return (
     <ListItem key={character.index} className={selectedClass}>

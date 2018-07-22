@@ -8,11 +8,11 @@ Ordered list of features I'm thinking about...
 * [x] Handle ties
 * [x] Add reset to clear round state
 * [x] Keep track of time based on turns and rounds (6 seconds per turn)
+* [X] Save state in local storage (to handle refresh cases)
 * [ ] Save notes per character for statuses
 * [ ] Add AC so hit/miss checks are faster
 * [ ] Allow DEX to be updated for future combat
 * [ ] Maybe condition icons?
-* [ ] Save state in local storage (to handle refresh cases)
 
 Future features that would require saving state to a backend...
 * [ ] Save characters for repeat encounters
