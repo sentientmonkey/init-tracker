@@ -14,12 +14,12 @@ import IconRotateLeft from '@material-ui/icons/RotateLeft';
 import './Initiative.css';
 
 
+const INITIAL_STATE = {characters: [], round: 1, turn: null, time: 0};
 class Initiative extends Component {
-  INITIAL_STATE = {characters: [], round: 1, turn: null, time: 0};
 
   constructor(props) {
     super(props);
-    this.state = this.INITIAL_STATE;
+    this.state = INITIAL_STATE;
 
     this.addCharacter = this.addCharacter.bind(this);
     this.moveCharacter = this.moveCharacter.bind(this);
@@ -106,14 +106,14 @@ class Initiative extends Component {
 
   reset() {
     this.setState({
-        turn: this.INITIAL_STATE.turn,
-        round: this.INITIAL_STATE.round,
-        time: this.INITIAL_STATE.time,
+        turn: INITIAL_STATE.turn,
+        round: INITIAL_STATE.round,
+        time: INITIAL_STATE.time,
     }, this.saveState);
   }
 
   clear() {
-    this.setState(this.INITIAL_STATE, this.saveState);
+    this.setState(INITIAL_STATE, this.saveState);
   }
 
   roundTitle() {
