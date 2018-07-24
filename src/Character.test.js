@@ -27,7 +27,7 @@ beforeEach(() => {
     />);
 });
 
-it('renders a ListItem', () => {
+it('renders a character details', () => {
   expect(wrapper.find(ListItem)).toHaveLength(1);
 
   const textProps = wrapper.find(ListItemText).props();

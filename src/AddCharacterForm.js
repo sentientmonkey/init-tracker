@@ -40,8 +40,8 @@ class AddCharacterForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="AddCharacterForm">
-        <Input className="AddCharacterForm-input" autoFocus={true} placeholder="Name" type="text" inputRef={el => this.name = el}/>
-        <Input className="AddCharacterForm-input" placeholder="Roll" type="number" inputRef={el => this.roll = el} />
+        <Input className="AddCharacterForm-input" aria-label="Name" autoFocus={true} placeholder="Name" type="text" inputRef={el => this.name = el}/>
+        <Input className="AddCharacterForm-input" aria-label="Roll" placeholder="Roll" type="number" inputRef={el => this.roll = el} />
         <Button color="primary" mini variant="fab" aria-label="add" type="submit">
           <AddIcon />
         </Button>
