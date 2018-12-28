@@ -1,16 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import AddCharacterForm from './AddCharacterForm';
 
 var wrapper;
 var addCharacter;
 var event;
 
+const startingIndex = 10;
+
 const character = {
   name: 'Samwise Gamgee',
   roll: 2,
-  index: 1,
+  index: 10,
   sortIndex: 0,
 };
 
@@ -18,6 +19,7 @@ beforeEach(() => {
   addCharacter = jest.fn();
   wrapper = mount(<AddCharacterForm
     addCharacter={addCharacter}
+    index={startingIndex}
     />);
   event = {preventDefault: jest.fn()};
 });
@@ -34,7 +36,7 @@ it('adds a character when submitted', () => {
   wrapper.instance().roll = {value: "2"};
   wrapper.find('form').get(0).props.onSubmit(event);
 
-  expect(wrapper.instance().state.index).toEqual(1);
+  expect(wrapper.instance().props.index).toEqual(startingIndex);
   expect(event.preventDefault).toHaveBeenCalled();
   expect(addCharacter).toBeCalledWith(character);
   expect(wrapper.instance().name.value).toEqual("");
@@ -47,7 +49,7 @@ it('does not submit when name is blank', () => {
   wrapper.instance().roll = {value: "2"};
   wrapper.find('form').get(0).props.onSubmit(event);
 
-  expect(wrapper.instance().state.index).toEqual(0);
+  expect(wrapper.instance().props.index).toEqual(startingIndex);
   expect(event.preventDefault).toHaveBeenCalled();
   expect(addCharacter).toHaveBeenCalledTimes(0);
 });
@@ -57,7 +59,7 @@ it('does not submit when roll is not a number', () => {
   wrapper.instance().roll = {value: "asdf"};
   wrapper.find('form').get(0).props.onSubmit(event);
 
-  expect(wrapper.instance().state.index).toEqual(0);
+  expect(wrapper.instance().props.index).toEqual(startingIndex);
   expect(event.preventDefault).toHaveBeenCalled();
   expect(addCharacter).toHaveBeenCalledTimes(0);
 });

@@ -8,7 +8,6 @@ class AddCharacterForm extends Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {index: 0};
   }
 
   handleSubmit(event) {
@@ -23,12 +22,10 @@ class AddCharacterForm extends Component {
       return;
     }
 
-    let index = this.state.index+1;
-    this.setState({index: index});
     const character = {
       name: name,
       roll: roll,
-      index: index,
+      index: this.props.index,
       sortIndex: 0,
     };
     this.props.addCharacter(character);

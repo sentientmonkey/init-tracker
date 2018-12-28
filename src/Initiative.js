@@ -14,7 +14,7 @@ import IconRotateLeft from '@material-ui/icons/RotateLeft';
 import './Initiative.css';
 
 
-const INITIAL_STATE = {characters: [], round: 1, turn: null, time: 0};
+const INITIAL_STATE = {characters: [], round: 1, turn: null, time: 0, index: 1};
 class Initiative extends Component {
 
   constructor(props) {
@@ -43,7 +43,10 @@ class Initiative extends Component {
     let characters = this.state.characters
         .concat(character)
         .sort(this.byIndexAndRoll);
-    this.setState({characters: characters}, this.saveState);
+
+    let index = this.state.index + 1;
+
+    this.setState({characters: characters, index: index}, this.saveState);
   }
 
   byIndexAndRoll(a,b) {
@@ -160,7 +163,7 @@ class Initiative extends Component {
           <List>
             {this.getListItems()}
           </List>
-          <AddCharacterForm addCharacter={this.addCharacter}/>
+          <AddCharacterForm addCharacter={this.addCharacter} index={this.state.index}/>
         </CardContent>
       </Card>
       </div>
