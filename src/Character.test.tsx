@@ -1,11 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
-import Character from './Character';
+import {shallow, ShallowWrapper} from 'enzyme';
+import Character, {CharacterData} from './Character';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Initiative from "./Initiative";
 
-const character = {
+const character: CharacterData = {
     name: "Bilbo Baggins",
     roll: 18,
     index: 1,
@@ -14,9 +14,9 @@ const character = {
 
 const moveCharacter = jest.fn();
 const removeCharacter = jest.fn();
-const initiative = jest.fn();
+const initiative = {} as Initiative;
 
-var wrapper;
+let wrapper: ShallowWrapper;
 
 beforeEach(() => {
   wrapper = shallow(<Character
