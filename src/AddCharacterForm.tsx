@@ -1,19 +1,27 @@
-import React, { Component } from 'react';
+import React, { Component, Props } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import './AddCharacterForm.css';
 
-class AddCharacterForm extends Component {
-  constructor(props) {
+interface AddCharacterProps {
+    index: number;
+    addCharacter(character: object): void;
+}
+
+class AddCharacterForm extends Component<AddCharacterProps, {}> {
+  name?: HTMLInputElement;
+  roll?: HTMLInputElement;
+
+  constructor(props : AddCharacterProps) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
+  handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    let name = this.name.value;
-    let roll = parseInt(this.roll.value, 10);
+    let name = (this.name && this.name.value) || "";
+    let roll = parseInt((this.roll && this.roll.value) || "", 10);
     if (name === "") {
       return;
     }
@@ -29,9 +37,13 @@ class AddCharacterForm extends Component {
       sortIndex: 0,
     };
     this.props.addCharacter(character);
-    this.name.value = "";
-    this.roll.value = "";
-    this.name.focus();
+    if (this.name) {
+        this.name.value = "";
+        this.name.focus();
+    }
+    if (this.roll) {
+        this.roll.value = "";
+    }
   }
 
   render() {

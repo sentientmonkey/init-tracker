@@ -37,10 +37,10 @@ it('renders a character details', () => {
 
 it('handles a move up', () => {
   wrapper.find('[aria-label="Move Up"]').simulate('click');
-  expect(moveCharacter).toBeCalledWith(1);
+  expect(moveCharacter).toBeCalledWith(1, undefined);
 });
 
 it('handles a delete', () => {
   wrapper.find('[aria-label="Delete"]').simulate('click');
-  expect(moveCharacter).toBeCalledWith(1);
+  expect(moveCharacter).toBeCalledWith(1, undefined);
 });

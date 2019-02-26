@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AddCharacterForm from './AddCharacterForm.js';
-import Character from './Character.js';
+import AddCharacterForm from './AddCharacterForm';
+import Character, {CharacterData} from './Character';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -13,11 +13,19 @@ import IconRotateLeft from '@material-ui/icons/RotateLeft';
 
 import './Initiative.css';
 
+class InitiativeState {
+   characters: Array<CharacterData> = [];
+   round: number = 1;
+   turn?: number;
+   time: number = 0;
+   index: number = 1;
+}
 
-const INITIAL_STATE = {characters: [], round: 1, turn: null, time: 0, index: 1};
-class Initiative extends Component {
+const INITIAL_STATE = new InitiativeState();
 
-  constructor(props) {
+class Initiative extends Component<{}, InitiativeState> {
+
+  constructor(props : any) {
     super(props);
     this.state = INITIAL_STATE;
 
@@ -39,17 +47,16 @@ class Initiative extends Component {
     localStorage.setItem("state", JSON.stringify(this.state));
   }
 
-  addCharacter(character) {
+  addCharacter(character: CharacterData) {
     let characters = this.state.characters
         .concat(character)
-        .sort(this.byIndexAndRoll);
 
     let index = this.state.index + 1;
 
     this.setState({characters: characters, index: index}, this.saveState);
   }
 
-  byIndexAndRoll(a,b) {
+  byIndexAndRoll(a: CharacterData, b: CharacterData) {
     const rollDiff = b.roll - a.roll;
     if (rollDiff !== 0) {
       return rollDiff;
@@ -58,7 +65,7 @@ class Initiative extends Component {
     return b.sortIndex - a.sortIndex;
   }
 
-  moveCharacter(index, event) {
+  moveCharacter(index: number, event: React.MouseEvent<HTMLInputElement>) {
     event.preventDefault();
 
     const characters = this.state.characters
@@ -76,9 +83,9 @@ class Initiative extends Component {
     this.setState({characters: characters}, this.saveState);
   }
 
-  removeCharacter(index, event) {
+    removeCharacter(index: number, event: React.MouseEvent<HTMLInputElement>) {
     event.preventDefault();
-    if (this.state.turn && this.state.turn.index === index) {
+    if (this.state.turn && this.state.turn === index) {
       this.nextTurn();
     }
     const characters = this.state.characters
@@ -93,7 +100,7 @@ class Initiative extends Component {
     let turn = this.state.turn;
     let round = this.state.round;
     let time = this.state.time;
-    let index = this.state.characters.findIndex((character) => character.index === turn);
+    let index = this.state.characters.findIndex((character: CharacterData) => character.index === turn);
     if (index === -1) {
       index = 0;
     } else {

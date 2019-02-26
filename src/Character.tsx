@@ -6,8 +6,24 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import Initiative from './Initiative';
 
-class Character extends Component {
+export class CharacterData {
+  index: number = 0;
+  name: string = "";
+  roll: number = 0;
+  sortIndex: number = 0;
+}
+
+interface CharacterProps {
+  character: CharacterData;
+  initiative: Initiative;
+  turn?: number;
+  moveCharacter(initiative: number, value: any) : void;
+  removeCharacter(initiative: number, value: any) : void;
+}
+
+class Character extends Component<CharacterProps, {}> {
   render() {
     const character = this.props.character;
     const initiative = this.props.initiative;
@@ -19,13 +35,17 @@ class Character extends Component {
       <ListItemSecondaryAction>
         <Tooltip title="Move up">
           <IconButton aria-label="Move Up"
-            onClick={this.props.moveCharacter.bind(initiative,character.index)}>
+                      onClick={(event: React.MouseEvent<HTMLInputElement>) => {
+                          this.props.moveCharacter.call(initiative, character.index, event);
+                      }}>
             <ArrowUpwardIcon />
           </IconButton>
         </Tooltip>
         <Tooltip title="Delete">
           <IconButton aria-label="Delete"
-            onClick={this.props.removeCharacter.bind(initiative,character.index)}>
+                      onClick={(event: React.MouseEvent<HTMLInputElement>) => {
+                          this.props.removeCharacter.call(initiative, character.index, event);
+                      }}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>
