@@ -5,19 +5,6 @@
   min-height: 94%;
 }
 
-.App-main-large {
-  padding: 50px;
-}
-
-.App-main-small {
-  padding: 0px;
-}
-
-.App-footer {
-  text-align: center;
-  font-size: 1.0rem;
-}
-
 a:link {
   color: #616161;
 }

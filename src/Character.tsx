@@ -35,7 +35,7 @@ class Character extends Component<CharacterProps, {}> {
       <ListItemSecondaryAction>
         <Tooltip title="Move up">
           <IconButton aria-label="Move Up"
-                      onClick={(event: React.MouseEvent<HTMLInputElement>) => {
+                      onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                           this.props.moveCharacter.call(initiative, character.index, event);
                       }}>
             <ArrowUpwardIcon />
@@ -43,7 +43,7 @@ class Character extends Component<CharacterProps, {}> {
         </Tooltip>
         <Tooltip title="Delete">
           <IconButton aria-label="Delete"
-                      onClick={(event: React.MouseEvent<HTMLInputElement>) => {
+                      onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
                           this.props.removeCharacter.call(initiative, character.index, event);
                       }}>
             <DeleteIcon />

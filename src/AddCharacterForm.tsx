@@ -1,7 +1,7 @@
-import React, { Component, Props } from 'react';
+import React, { Component } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import './AddCharacterForm.css';
 
 interface AddCharacterProps {
@@ -51,9 +51,9 @@ class AddCharacterForm extends Component<AddCharacterProps, {}> {
       <form onSubmit={this.handleSubmit} className="AddCharacterForm">
         <Input className="AddCharacterForm-input" aria-label="Name" autoFocus={true} placeholder="Name" type="text" inputRef={el => this.name = el}/>
         <Input className="AddCharacterForm-input" aria-label="Roll" placeholder="Roll" type="number" inputRef={el => this.roll = el} />
-        <Button color="primary" mini variant="fab" aria-label="add" type="submit">
+        <Fab color="primary" size="small" aria-label="add" type="submit">
           <AddIcon />
-        </Button>
+        </Fab>
       </form>
     );
   }
