@@ -1,5 +1,5 @@
 import React from "react";
-import Hidden from '@material-ui/core/Hidden';
+import {Container} from '@material-ui/core';
 import './Main.css';
 
 interface MainProps {
@@ -8,17 +8,10 @@ interface MainProps {
 
 export default function Main(props: MainProps) {
   return (
-    <>
-    <Hidden mdUp>
-        <main className="Main-small">
+    <Container>
+        <main>
           {props.children}
         </main>
-      </Hidden>
-      <Hidden smDown>
-        <main className="Main-large">
-          {props.children}
-        </main>
-      </Hidden>
-    </>
+    </Container>
   );
 };

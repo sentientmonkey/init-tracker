@@ -1,16 +1,20 @@
 import React from 'react';
+import {Link as RouterLink} from "react-router-dom";
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import {
+  AppBar,
+  Button,
+  Toolbar
+} from '@material-ui/core';
+
+const AdapterLink = React.forwardRef((props: any, ref: any) => <RouterLink innerRef={ref} {...props} />);
 
 export default function PrimaryNav() {
   return (
     <AppBar position="static" color="secondary">
       <Toolbar>
-        <Typography variant="h6">
-            Initiative Tracker
-        </Typography>
+          <Button color="inherit" component={AdapterLink} to="/">Initiative Tracker</Button>
+          <Button color="inherit" component={AdapterLink} to="/encounter">Encounter Builder</Button>
       </Toolbar>
     </AppBar>
   );

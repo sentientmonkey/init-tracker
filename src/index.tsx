@@ -5,19 +5,21 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import grey from '@material-ui/core/colors/grey';
-import pink from '@material-ui/core/colors/pink';
-import red from '@material-ui/core/colors/red';
 
 // All the following keys are optional.
 // We try our best to provide a great default value.
 const theme = createMuiTheme({
   palette: {
-    primary: pink,
-    secondary: grey,
-    error: red,
-    contrastThreshold: 3,
-    tonalOffset: 0.2,
+    primary: {
+      main: '#d81b60',
+      dark: '#a00037',
+      light: '#ff5c8d',
+    },
+    secondary: {
+      main: '#424242',
+      dark: '#1b1b1b',
+      light: '#6d6d6d',
+    },
   },
 });
 
