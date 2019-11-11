@@ -1,4 +1,4 @@
-import React, {SFC} from 'react';
+import React from 'react';
 
 interface Props {
    xp: number,

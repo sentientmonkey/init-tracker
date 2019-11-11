@@ -25,7 +25,7 @@ interface INameToNumberMap {
 }
 
 const CR_VALUES = ["0", "1/8", "1/4", "1/2"].concat(
-    Array(30).fill("").map((_,i) => i.toString()));
+    Array(30).fill("").map((_,i) => (i+1).toString()));
 
 const XP_FOR_CR: INameToNumberMap = {
  "0":	10,
@@ -62,7 +62,7 @@ const XP_FOR_CR: INameToNumberMap = {
  "28": 120000,
  "29": 135000,
  "30": 155000
-}
+};
 
 function Monster({id, count, xp, onChangeMonster, onRemoveMonster}: MonsterProps) {
     const [cr, setCR] = useState("0");
