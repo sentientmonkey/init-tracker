@@ -1,22 +1,18 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import './App.css';
-import Initiative from './Initiative';
-import PrimaryNav from './PrimaryNav';
-import Main from './Main';
-import Encounter from './Encounter';
-import Footer from './Footer';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import Initiative from "./Initiative";
+import PrimaryNav from "./PrimaryNav";
+import Main from "./Main";
+import Encounter from "./Encounter";
+import Footer from "./Footer";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <PrimaryNav />
-          <Main>
+        <Main>
           <Switch>
             <Route path="/encounter">
               <Encounter />
@@ -25,10 +21,10 @@ function App() {
               <Initiative />
             </Route>
           </Switch>
-          </Main>
+        </Main>
         <Footer />
       </div>
-   </Router>
+    </Router>
   );
 }
 

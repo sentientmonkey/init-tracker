@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
 interface Props {
-   xp: number,
+  xp: number;
 }
 
-const XP = ({xp}: Props) => (
-    <span>{xp.toLocaleString()}</span>
-)
+const XP = ({ xp }: Props) => <span>{xp.toLocaleString()}</span>;
 
 export default XP;
