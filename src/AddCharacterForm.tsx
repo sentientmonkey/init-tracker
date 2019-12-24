@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import AddIcon from "@material-ui/icons/Add";
-import Input from "@material-ui/core/Input";
-import Fab from "@material-ui/core/Fab";
-import "./AddCharacterForm.css";
+import React, {Component} from 'react';
+import AddIcon from '@material-ui/icons/Add';
+import Input from '@material-ui/core/Input';
+import Fab from '@material-ui/core/Fab';
+import './AddCharacterForm.css';
 
 interface AddCharacterProps {
   index: number;
@@ -20,9 +20,9 @@ class AddCharacterForm extends Component<AddCharacterProps, {}> {
 
   handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    let name = (this.name && this.name.value) || "";
-    let roll = parseInt((this.roll && this.roll.value) || "", 10);
-    if (name === "") {
+    let name = (this.name && this.name.value) || '';
+    let roll = parseInt((this.roll && this.roll.value) || '', 10);
+    if (name === '') {
       return;
     }
 
@@ -34,15 +34,15 @@ class AddCharacterForm extends Component<AddCharacterProps, {}> {
       name: name,
       roll: roll,
       index: this.props.index,
-      sortIndex: 0
+      sortIndex: 0,
     };
     this.props.addCharacter(character);
     if (this.name) {
-      this.name.value = "";
+      this.name.value = '';
       this.name.focus();
     }
     if (this.roll) {
-      this.roll.value = "";
+      this.roll.value = '';
     }
   }
 

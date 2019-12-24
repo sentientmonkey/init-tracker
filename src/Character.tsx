@@ -23,47 +23,40 @@ interface CharacterProps {
   removeCharacter(initiative: number, value: any): void;
 }
 
-class Character extends Component<CharacterProps, {}> {
-  render() {
-    const character = this.props.character;
-    const initiative = this.props.initiative;
-    const selectedClass =
-      character.index === this.props.turn ? 'Initiative-selected' : '';
+const Character = ({
+  character,
+  initiative,
+  turn,
+  moveCharacter,
+  removeCharacter,
+}: CharacterProps) => {
+  const selectedClass = character.index === turn ? 'Initiative-selected' : '';
 
-    return (
-      <ListItem key={character.index} className={selectedClass}>
-        <ListItemText primary={character.name} secondary={character.roll} />
-        <ListItemSecondaryAction>
-          <Tooltip title="Move up">
-            <IconButton
-              aria-label="Move Up"
-              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-                this.props.moveCharacter.call(
-                  initiative,
-                  character.index,
-                  event,
-                );
-              }}>
-              <ArrowUpwardIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Delete">
-            <IconButton
-              aria-label="Delete"
-              onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-                this.props.removeCharacter.call(
-                  initiative,
-                  character.index,
-                  event,
-                );
-              }}>
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-        </ListItemSecondaryAction>
-      </ListItem>
-    );
-  }
-}
+  return (
+    <ListItem key={character.index} className={selectedClass}>
+      <ListItemText primary={character.name} secondary={character.roll} />
+      <ListItemSecondaryAction>
+        <Tooltip title="Move up">
+          <IconButton
+            aria-label="Move Up"
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+              moveCharacter.call(initiative, character.index, event);
+            }}>
+            <ArrowUpwardIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Delete">
+          <IconButton
+            aria-label="Delete"
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+              removeCharacter.call(initiative, character.index, event);
+            }}>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      </ListItemSecondaryAction>
+    </ListItem>
+  );
+};
 
 export default Character;
