@@ -43,11 +43,11 @@ describe('Character', function() {
 
   it('handles a move up', function() {
     wrapper.find('[aria-label="Move Up"]').simulate('click');
-    expect(moveCharacter).toHaveBeenCalledWith(1, undefined);
+    expect(moveCharacter).toHaveBeenCalledWith(1);
   });
 
   it('handles a delete', function() {
     wrapper.find('[aria-label="Delete"]').simulate('click');
-    expect(removeCharacter).toHaveBeenCalledWith(1, undefined);
+    expect(removeCharacter).toHaveBeenCalledWith(1);
   });
 });
